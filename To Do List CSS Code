@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0078D7 50%, #ffffff 50%);
+    z-index: -1;
+}
+
+.container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    padding: 30px;
+    text-align: center;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+.task-input {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.task-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.task-input button {
+    padding: 10px 15px;
+    border: none;
+    background: #0078D7;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.task-list.hidden {
+    display: none;
+}
+
+.task-list li {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.task-list li.done {
+    background: #c8e6c9;
+    color: #2e7d32;
+}
+
+.task-list li.deleted {
+    background: #2c2c2c;
+    color: #ffffff;
+}
+
+.task-list li .buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.task-list li button {
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.task-list li .done-btn {
+    background: #28a745;
+}
+
+.task-list li .delete-btn {
+    background: #FF4D4D;
+}
+
+.task-list li .permanent-delete-btn {
+    background: #444;
+}
+
+.task-list li .restore-btn {
+    background: #ffc107;
+}
+
+.task-summary-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.task-summary {
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+}
+
+.see-more-btn {
+    margin-top: 10px;
+    background: #0078D7;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
