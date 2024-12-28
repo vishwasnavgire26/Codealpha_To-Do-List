@@ -1,0 +1,52 @@
+function addTask() {
+    const taskInput = document.getElementById('task');
+    const taskList = document.getElementById('taskList');
+    if (taskInput.value.trim()) {
+        const li = document.createElement('li');
+        li.dataset.description = taskInput.value; // Store description in dataset
+        li.innerHTML = `<span>${taskInput.value}</span>
+            <div class='buttons'>
+                <button class='done-btn' onclick='markDone(this)'>Done</button>
+                <button class='delete-btn' onclick='deleteTask(this)'>Delete</button>
+            </div>`;
+        taskList.appendChild(li);
+        taskInput.value = '';
+    }
+}
+
+function markDone(button) {
+    const li = button.parentElement.parentElement;
+    const completedTasks = document.getElementById('completedTasks');
+    li.classList.remove('crossed'); // Remove cross line in completed tasks
+    li.classList.add('done');
+    li.querySelector('.buttons').innerHTML = ''; // Remove all buttons
+    completedTasks.appendChild(li);
+}
+
+function deleteTask(button) {
+    const li = button.parentElement.parentElement;
+    const deletedTasks = document.getElementById('deletedTasks');
+    li.classList.add('deleted');
+    li.querySelector('.buttons').innerHTML = `
+        <button class='restore-btn' onclick='restoreTask(this)'>Restore</button>
+        <button class='permanent-delete-btn' onclick='permanentDelete(this)'>Delete Permanently</button>`;
+    deletedTasks.appendChild(li);
+}
+
+function restoreTask(button) {
+    const li = button.parentElement.parentElement;
+    const taskList = document.getElementById('taskList');
+    li.classList.remove('done', 'deleted');
+    li.querySelector('.buttons').innerHTML = `
+        <button class='done-btn' onclick='markDone(this)'>Done</button>
+        <button class='delete-btn' onclick='deleteTask(this)'>Delete</button>`;
+    taskList.appendChild(li);
+}
+
+function permanentDelete(button) {
+    button.parentElement.parentElement.remove();
+}
+
+function toggleSection(id) {
+    document.getElementById(id).classList.toggle('hidden');
+}
